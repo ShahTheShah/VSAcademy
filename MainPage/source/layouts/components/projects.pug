@@ -1,0 +1,36 @@
+section.projects
+    ul.projects-params
+        if name == 'index'
+            li.projects-param Шифр
+        else if name == 'clients'
+            li.projects-param Организация
+        if name == 'index'
+            li.projects-param Заказчик
+            li.projects-param Местоположение
+            li.projects-param Кадастр
+            li.projects-param Параметры
+            li.projects-param Сумма
+            li.projects-param Стадия работы
+    ul.projects-list
+        if name == 'index'
+            include ./project
+            include ./project
+            include ./project
+            include ./project
+            include ./project
+            include ./project
+            include ./project
+            include ./project
+            include ./project
+        else if name == 'clients'
+            include ./client
+            include ./client
+            include ./client
+            include ./client
+            include ./client
+            include ./client
+            include ./client
+            include ./client
+            include ./client
+            include ./client
+            include ./client

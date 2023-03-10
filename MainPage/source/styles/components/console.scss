@@ -1,0 +1,11 @@
+.console {
+    padding: 0px 0 12px;
+    &-header {
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        gap: 5px;
+    }
+}
+
+@import './addProject';
