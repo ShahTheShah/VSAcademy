@@ -1,53 +1,100 @@
-#root {
-    position: absolute;
-    top: 0; left: 0;
-    display: flex;
-    flex-direction: column;
-    width: 100vw; height: 100vh;
-    background-color: $GRAY_200;
+.link {
+    position: relative;
+    padding: 2px 10px;
+    display: block;
+    text-decoration: none;
+    border-bottom: 1px solid $DARK;
+    background-color: transparent;
+    color: $DARK;
+    overflow: hidden;
+    transition: $animation;
+    z-index: 101;
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: $DARK;
+        transform: translateX(-100%);
+        transition: $animation;
+        z-index: -1;
+    }
+    &:hover {
+        color: white;
+        &::before {
+            transform: translateX(0);
+        }
+    }
 }
 
-.main {
-    padding-top: 5px;
-    position: fixed;
-    top: 60px; left: 0;
-    width: 100%; height: calc(100% - 60px);
-    overflow-y: scroll;
-}
-.container {
-    padding: 10px 20px;
-}
-.link {
-    color: $TEXT_COLOR;
-    text-decoration: none;
-    &:hover {
-        text-decoration: underline;
-    }
-}
 .button {
     position: relative;
-    padding: 8px 15px;
-    background-color: $PRIMARY;
-    border-radius: 20px;
-    color: white;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 1px solid $DARK;
     transition: $animation;
+    color: $DARK;
+    overflow: hidden;
+    &:before, &::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        transition: $animation;
+    }
+    &::after {
+        z-index: -4;
+        background-color: $BG_COLOR;
+    }
+    &::before {
+        background-color: $DARK;
+        transform: translateX(-100%);
+        z-index: -2;
+    }
     &:hover {
         cursor: pointer;
-        background-color: darken($PRIMARY, 10%);
+        color: white;
+        &::before {
+            transform: translateX(0);
+        }
     }
-    &:active {
-        background-color: lighten($PRIMARY, 5%);
+    &-dark {
+        color: white;
+        &::after {
+            background-color: $DARK;
+            z-index: -4;
+        }
+        &::before {
+            transform: translateX(-100%);
+            background-color: $BG_COLOR;
+            z-index: -2;
+        }
+        &:hover {
+            color: $DARK;
+            &::before {
+                transform: translateX(0);
+            }
+        }
+
     }
 }
-.input, .select {
-    padding: 8px 15px;
-    appearance: button;
-    border-radius: 40px;
-    background-color: #fff;
-    font-size: 14px;
-    box-shadow: 0 4px 9px rgba(black, .14);
-    transition: $animation;
-    &:focus {
-        box-shadow: 0 4px 9px rgba(black, .24);
+.title {
+    margin-top: 20px;
+    font-size: 65px;
+    line-height: 75px;
+    font-weight: 400;
+    text-transform: uppercase;
+    &_icon {
+    width: 50px; height: 50px;
+    svg {
+        width: 100%; height: 100%;
+        fill: $PRIMARY;
     }
+}
+}
+.subtitle {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 300;
 }
